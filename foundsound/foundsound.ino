@@ -7,13 +7,27 @@ void setup()
 {
   MeggyJrSimpleSetup();
 }
-void loop()
+
+lvlArray
+lvlcompletionArray
+playerArray
+
+void loop() // loop code that goes through loop
 {
   shift();
   DrawPx(xcoord,ycoord,Blue); // draw dot
   DisplaySlate();
   delay(150);
   ClearSlate();
+  
+  /*
+  (make 3 arrays: level array, level completion array, player array
+  compare player array to level completion array to see if player completed
+    neccesary steps to complete level
+  compare current level completion array to level array
+     to change the level
+  
+  */
 }
 void shift() // taken from Maze_Game
 {
@@ -21,9 +35,11 @@ void shift() // taken from Maze_Game
   if (Button_Right)
     {
       if (xcoord < 7)
-      xcoord = xcoord + 1; // indented because belongs to inner if statement; could also say xcoord++
+      xcoord = xcoord + 1; // indented because belongs to inner if statement;
+                           //  could also say xcoord++
       if (ReadPx(xcoord, ycoord) == Green)
-      xcoord = xcoord -1; // as soon as user lands on green pixel, go +1 pixels to original position
+      xcoord = xcoord -1; // as soon as user lands on green pixel,
+                          // go +1 pixels to original position
       if (xcoord == 7)
       Tone_Start (ToneC3,100);
     }
@@ -43,7 +59,8 @@ void shift() // taken from Maze_Game
       if (ycoord < 7)
       ycoord = ycoord + 1;
       if (ReadPx(xcoord, ycoord) == Green)
-      ycoord = ycoord -1; // as soon as user lands on green pixel, go -1 pixels to original position
+      ycoord = ycoord -1; // as soon as user lands on green pixel,
+                          // go -1 pixels to original position
       if (ycoord == 7)
       Tone_Start (ToneC3,100); // play error sound when go off screen
     }
