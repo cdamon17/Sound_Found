@@ -1,5 +1,9 @@
 #include <MeggyJrSimple.h>
 // global variables go here
+int levelArray[3] = (0, 0, 0) // creates the different levels for the game
+                              // and updates the levels
+int completionArray[3] = (0, 0, 0) // checks what player did to what is
+                                  // needed to move on to the next level
 int xcoord = 0;
 int ycoord = 7;
 
@@ -8,28 +12,31 @@ void setup()
   MeggyJrSimpleSetup();
 }
 
-lvlArray
-lvlcompletionArray
-playerArray
+
+lvlcompletionArray // checks what player did to complet level
+
 
 void loop() // loop code that goes through loop
 {
   shift();
   DrawPx(xcoord,ycoord,Blue); // draw dot
+  /*
+  drawlevel
+  updatelevel
+  */
   DisplaySlate();
   delay(150);
   ClearSlate();
   
   /*
-  (make 3 arrays: level array, level completion array, player array
-  compare player array to level completion array to see if player completed
+  (make 2 arrays: level array, level completion array,
+  compare level completion array to level array see if player completed
     neccesary steps to complete level
-  compare current level completion array to level array
-     to change the level
+  if player meets requirements, update level array
   
   */
 }
-void shift() // taken from Maze_Game
+void shift() // taken from Maze_Game of Brennan Brown
 {
   CheckButtonsDown();
   if (Button_Right)
