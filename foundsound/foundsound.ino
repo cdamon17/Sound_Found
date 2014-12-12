@@ -1,11 +1,11 @@
 #include <MeggyJrSimple.h>
 // global variables go here
-int levelArray[3] = (0, 0, 0) // creates the different levels for the game
+int levelArray[3] = {0, 0, 0}; // creates the different levels for the game
                               // and updates the levels
-int completionArray[3] = (0, 0, 0) // checks what player did to what is
+int completionArray[3] = {0, 0, 0}; // checks what player did to what is
                                   // needed to move on to the next level
 int xcoord = 0;
-int ycoord = 7;
+int ycoord = 0;
 
 void setup()
 {
@@ -13,7 +13,6 @@ void setup()
 }
 
 
-lvlcompletionArray // checks what player did to complet level
 
 
 void loop() // loop code that goes through loop
@@ -34,8 +33,21 @@ void loop() // loop code that goes through loop
     neccesary steps to complete level
   if player meets requirements, update level array
   
+  psudo code:
+  * game starts with first level of dots from level array and player coursor
+  on screen,
+  * player moves coursor and can press A when on a dot to play a sound (will
+  need to make a sound method for having certain dots make a certain sound),
+  * use didIwin method (boolean) to compaire the completion and level arrays,
+  * if true allow level array to update to make the next leve and completion
+   array to update for the next level,
+  * 
+  
+  
   */
 }
+
+
 void shift() // taken from Maze_Game of Brennan Brown
 {
   CheckButtonsDown();
@@ -44,11 +56,11 @@ void shift() // taken from Maze_Game of Brennan Brown
       if (xcoord < 7)
       xcoord = xcoord + 1; // indented because belongs to inner if statement;
                            //  could also say xcoord++
-      if (ReadPx(xcoord, ycoord) == Green)
-      xcoord = xcoord -1; // as soon as user lands on green pixel,
+        if (ReadPx(xcoord, ycoord) == Green)
+          xcoord = xcoord -1; // as soon as user lands on green pixel,
                           // go +1 pixels to original position
       if (xcoord == 7)
-      Tone_Start (ToneC3,100);
+        Tone_Start (ToneC3,100);
     }
     
   if (Button_Left)
