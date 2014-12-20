@@ -1,12 +1,12 @@
 #include <MeggyJrSimple.h>
 // global variables go here
-int xcoord = 0;
-int ycoord = 0;
+int xcoord = 0; // x coord of cursor
+int ycoord = 0; // y coord of cursor
 
-int C3x = 4;
-int C3y = 5;
-int B3x = 6;
-int B3y = 2;
+int C3Violetx = 4;
+int C3Violety = 5;
+int B3Greenx = 6;
+int B3Greeny = 2;
 int A3x = 2;
 int A3y = 3;
 int D3x = 0;
@@ -16,10 +16,10 @@ struct Point
 {
   /*int x;
   int y;*/
-  int C3x;
-  int C3y;
-  int B3x;
-  int B3y;
+  int C3Violetx;
+  int C3Violety;
+  int B3Greenx;
+  int B3Greeny;
   int A3x;
   int A3y;
   int D3x;
@@ -29,8 +29,8 @@ struct Point
   //boolean visited;
 };
 
-Point p1={C3x,C3y};
-Point p2={B3x,B3y};
+Point p1={C3Violetx,C3Violety};
+Point p2={B3Greenx,B3Greeny};
 Point p3={A3x,A3y};
 Point p4={D3x,D3y};
 
@@ -50,8 +50,9 @@ void setup()
 void loop() // loop code that goes through loop
 {
   shift();
-  DrawPx(p1.C3x,p1.C3y,Violet);
-  DrawPx(xcoord,ycoord,Blue); // draw dot
+  DrawPx(p1.C3Violetx,p1.C3Violety,Violet); // draw violet dot
+  DrawPx(p2.B3Greenx,p2.B3Greeny,Green); // draw green dot
+  DrawPx(xcoord,ycoord,Blue); // draw coursor
   dotsound(); // make sounds from dots
 
   /*
@@ -125,11 +126,22 @@ void dotsound() // simple code to make dots create sound
  CheckButtonsDown();
  if (Button_A)
  {
-  if (ReadPx(xcoord == dotArray[0].C3x,ycoord == dotArray[0].C3y) == Violet)
-   {
-     Tone_Start (ToneC3,300);
-   }
-   DrawPx(0,0,15);
+ // if (ReadPx(xcoord == dotArray[0].C3Violetx,ycoord == dotArray[0].C3Violety) == Blue)
+  if (xcoord == 4)
+    {
+      if (ycoord == 5)
+       {
+         Tone_Start (ToneC3,300);
+       }
+     }
+   if (xcoord == 6)
+     {
+       if (ycoord == 2)
+         {
+           Tone_Start (ToneB3,300);
+         }
+     }
+     DrawPx(0,0,15); // this is to check that the code is going though
  }
 }
 
