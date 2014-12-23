@@ -3,6 +3,7 @@
 int xcoord = 0; // x coord of cursor
 int ycoord = 0; // y coord of cursor
 
+// coordinate values of dots
 int C3Violetx = 4;
 int C3Violety = 5;
 int B3Greenx = 6;
@@ -64,6 +65,9 @@ void loop() // loop code that goes through loop
   ClearSlate();
   
   /*
+  
+  // will need to change the psudo code
+  
   (make 2 arrays: level array, level completion array,
   compare level completion array to level array see if player completed
     neccesary steps to complete level
