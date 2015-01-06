@@ -3,41 +3,8 @@
 int xcoord = 0; // x coord of cursor
 int ycoord = 0; // y coord of cursor
 
-// coordinate values of dots
-int C3Violetx = 4;
-int C3Violety = 5;
-int B3Greenx = 6;
-int B3Greeny = 2;
-int A3x = 2;
-int A3y = 3;
-int D3x = 0;
-int D3y = 4;
+int Level = 1;
 
-struct Point
-{
-  /*int x;
-  int y;*/
-  int C3Violetx;
-  int C3Violety;
-  int B3Greenx;
-  int B3Greeny;
-  int A3x;
-  int A3y;
-  int D3x;
-  int D3y;
-  
-  
-  //boolean visited;
-};
-
-Point p1={C3Violetx,C3Violety};
-Point p2={B3Greenx,B3Greeny};
-Point p3={A3x,A3y};
-Point p4={D3x,D3y};
-
-Point dotArray[64]={p1,p2,p3,p4};
-
-int marker=4;
 
 void setup()
 {
@@ -50,11 +17,12 @@ void setup()
 
 void loop() // loop code that goes through loop
 {
-  shift();
-  DrawPx(p1.C3Violetx,p1.C3Violety,Violet); // draw violet dot
-  DrawPx(p2.B3Greenx,p2.B3Greeny,Green); // draw green dot
+  shift(); // to make coursor work
   DrawPx(xcoord,ycoord,Blue); // draw coursor
-  dotsound(); // make sounds from dots
+  if (Level == 1) // level desing with help from Mrs. Kiang
+  {
+    DrawLevel1();
+  }
 
   /*
   drawlevel
@@ -93,45 +61,51 @@ void shift() // taken from Maze_Game of Brennan Brown
   CheckButtonsDown();
   if (Button_Right)
     {
-      if (xcoord < 7)
-      xcoord = xcoord + 1; // indented because belongs to inner if statement;
-                           //  could also say xcoord++
-      if (xcoord == 7)
+      if (xcoord == 7) // FIRST check to see i moving right would put the player
+                     // out of bounds
         Tone_Start (ToneC3,100);
+      
+      if (xcoord < 7)// THEN the player is not already in column 7, add to the
+                    // of x
+        xcoord = xcoord +1; // indented because belongs to inner if statement;
+                // could also say xcoord ++
     }
     
   if (Button_Left)
     {
-      if (xcoord > 0)
-      xcoord = xcoord - 1;
       if (xcoord == 0)
-      Tone_Start (ToneC3,100);
+        Tone_Start (ToneC3,100);
+      if (xcoord > 0)
+        xcoord = xcoord - 1;
     }
     
   if (Button_Up)
     {
-      if (ycoord < 7)
-      ycoord = ycoord + 1;
       if (ycoord == 7)
-      Tone_Start (ToneC3,100); // play error sound when go off screen
+        Tone_Start (ToneC3,100); // play error sound when go off screen
+      if (ycoord < 7)
+        ycoord = ycoord + 1;
     }
     
    if (Button_Down)
     {
-      if (ycoord > 0)
-      ycoord = ycoord - 1;
       if (ycoord == 0)
-      Tone_Start (ToneC3,100); // play error sound when go off screen
+        Tone_Start (ToneC3,100); // play error sound when go off screen
+      if (ycoord > 0)
+        ycoord = ycoord - 1;
     }
 }
 
-void dotsound() // simple code to make dots create sound
+void DrawLevel1() // help from Mrs, Kiang about how to make levels
 {
- CheckButtonsDown();
+  DrawPx(4,5,Violet);
+  DrawPx(6,2,Green);
+  DrawPx(2,3,Red);
+  DrawPx(0,4,White);
+  CheckButtonsDown();
  if (Button_A)
  {
- // if (ReadPx(xcoord == dotArray[0].C3Violetx,ycoord == dotArray[0].C3Violety) == Blue)
-  if (xcoord == 4)
+   if (xcoord == 4)
     {
       if (ycoord == 5)
        {
@@ -142,10 +116,22 @@ void dotsound() // simple code to make dots create sound
      {
        if (ycoord == 2)
          {
+           Tone_Start (ToneD3,300);
+         }
+     }
+   if (xcoord == 2)
+     {
+       if (ycoord == 3)
+         {
+           Tone_Start (ToneA3,300);
+         }
+     } 
+   if (xcoord == 0)
+     {
+       if (ycoord == 4)
+         {
            Tone_Start (ToneB3,300);
          }
      }
-     DrawPx(0,0,15); // this is to check that the code is going though
  }
 }
-
