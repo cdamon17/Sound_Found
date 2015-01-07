@@ -5,6 +5,10 @@ int ycoord = 0; // y coord of cursor
 
 int Level = 1;
 
+boolean dot1 = false;
+boolean dot2 = false;
+boolean dot3 = false;
+boolean dot4 = false;
 
 void setup()
 {
@@ -13,17 +17,20 @@ void setup()
 }
 
 
-
-
 void loop() // loop code that goes through loop
 {
+  
   shift(); // to make coursor work
   DrawPx(xcoord,ycoord,Blue); // draw coursor
-  if (Level == 1) // level desing with help from Mrs. Kiang
+  if (Level == 1) // level chang desing with help from Mrs. Kiang
   {
     DrawLevel1();
   }
-
+  else if (Level == 2)
+  {
+   DrawLevel2();
+  }
+  levelcheck();
   /*
   drawlevel
   updatelevel
@@ -110,6 +117,7 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
       if (ycoord == 5)
        {
          Tone_Start (ToneC3,300);
+         dot1 = true;
        }
      }
    if (xcoord == 6)
@@ -117,6 +125,7 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
        if (ycoord == 2)
          {
            Tone_Start (ToneD3,300);
+           dot2 = true;
          }
      }
    if (xcoord == 2)
@@ -124,6 +133,7 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
        if (ycoord == 3)
          {
            Tone_Start (ToneA3,300);
+           dot3 = true;
          }
      } 
    if (xcoord == 0)
@@ -131,7 +141,46 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
        if (ycoord == 4)
          {
            Tone_Start (ToneB3,300);
+           dot4 = true;
          }
      }
  }
+}
+
+void DrawLevel2() // the second level
+{
+   DrawPx(1,7,Yellow);
+   DrawPx(2,6,Yellow);
+   DrawPx(3,5,Yellow);
+   DrawPx(4,6,Yellow);
+   DrawPx(5,5,Yellow);
+   DrawPx(6,6,Yellow);
+   DrawPx(7,7,Yellow);
+   DrawPx(6,4,Yellow);
+   DrawPx(6,3,Yellow);
+   DrawPx(6,2,Yellow);
+   DrawPx(1,0,Yellow);
+   DrawPx(1,1,Yellow);
+   DrawPx(1,2,Yellow);
+   DrawPx(2,1,Yellow);
+   DrawPx(3,2,Yellow);
+   DrawPx(3,1,Yellow);
+   DrawPx(3,0,Yellow);
+}
+
+void levelcheck() // code to check if level needs to change
+{
+ if (dot1 = true)
+  {
+   if (dot2 = true)
+     {
+      if (dot3 = true)
+        {
+         if (dot4 = true)
+         {
+          Level ++;
+         }
+        } 
+     }
+  } 
 }
