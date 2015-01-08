@@ -3,7 +3,7 @@
 int xcoord = 0; // x coord of cursor
 int ycoord = 0; // y coord of cursor
 
-int Level = 1;
+int Level = 1; // levels
 
 boolean dot1 = false;
 boolean dot2 = false;
@@ -19,18 +19,33 @@ void setup()
 
 void loop() // loop code that goes through loop
 {
-  
   shift(); // to make coursor work
   DrawPx(xcoord,ycoord,Blue); // draw coursor
-  if (Level == 1) // level chang desing with help from Mrs. Kiang
+  if (Level == 1) // level change desing with help from Mrs. Kiang
   {
     DrawLevel1();
   }
-  else if (Level == 2)
+  else if (Level == 2);
   {
-   DrawLevel2();
+    DrawLevel2();
   }
   levelcheck();
+  
+  /*
+  DrawLevel1();
+  while(Level == 1) {
+   
+   if (levelcheck()) return;
+  }
+  DisplaySlate();
+  ClearSlate();
+  DrawLevel2();
+  while(Level == 2) {
+   if (levelcheck()) return;
+  }
+  */
+  
+  
   /*
   drawlevel
   updatelevel
@@ -38,28 +53,6 @@ void loop() // loop code that goes through loop
   DisplaySlate();
   delay(150);
   ClearSlate();
-  
-  /*
-  
-  // will need to change the psudo code
-  
-  (make 2 arrays: level array, level completion array,
-  compare level completion array to level array see if player completed
-    neccesary steps to complete level
-  if player meets requirements, update level array
-  
-  psudo code:
-  * game starts with first level of dots from level array and player coursor
-  on screen,
-  * player moves coursor and can press A when on a dot to play a sound (will
-  need to make a sound method for having certain dots make a certain sound),
-  * use didIwin method (boolean) to compaire the completion and level arrays,
-  * if true allow level array to update to make the next leve and completion
-   array to update for the next level,
-  * 
-  
-  
-  */
 }
 
 
@@ -105,10 +98,10 @@ void shift() // taken from Maze_Game of Brennan Brown
 
 void DrawLevel1() // help from Mrs, Kiang about how to make levels
 {
-  DrawPx(4,5,Violet);
-  DrawPx(6,2,Green);
-  DrawPx(2,3,Red);
-  DrawPx(0,4,White);
+  DrawPx(1,2,Violet);
+  DrawPx(3,5,Green);
+  DrawPx(6,3,Red);
+  DrawPx(0,7,White);
   CheckButtonsDown();
  if (Button_A)
  {
@@ -126,6 +119,12 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
          {
            Tone_Start (ToneD3,300);
            dot2 = true;
+           /*
+           if dot1 = true // further code for what I wanted my end game to be
+           {             // but at this point in time I am unable to test it
+             dot2 = true;
+           }
+           */
          }
      }
    if (xcoord == 2)
@@ -134,6 +133,12 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
          {
            Tone_Start (ToneA3,300);
            dot3 = true;
+            /*
+           if dot2 = true // further code for what I wanted my end game to be
+           {             // but at this point in time I am unable to test it
+             dot3 = true;
+           }
+           */
          }
      } 
    if (xcoord == 0)
@@ -142,12 +147,18 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
          {
            Tone_Start (ToneB3,300);
            dot4 = true;
+            /*
+           if dot3 = true // further code for what I wanted my end game to be
+           {             // but at this point in time I am unable to test it
+             dot4 = true;
+           }
+           */
          }
      }
  }
 }
 
-void DrawLevel2() // the second level
+void DrawLevel2() // the second level, it spells WIN
 {
    DrawPx(1,7,Yellow);
    DrawPx(2,6,Yellow);
@@ -156,16 +167,21 @@ void DrawLevel2() // the second level
    DrawPx(5,5,Yellow);
    DrawPx(6,6,Yellow);
    DrawPx(7,7,Yellow);
-   DrawPx(6,4,Yellow);
-   DrawPx(6,3,Yellow);
-   DrawPx(6,2,Yellow);
-   DrawPx(1,0,Yellow);
-   DrawPx(1,1,Yellow);
+   
+   DrawPx(1,3,Yellow);
    DrawPx(1,2,Yellow);
-   DrawPx(2,1,Yellow);
-   DrawPx(3,2,Yellow);
-   DrawPx(3,1,Yellow);
-   DrawPx(3,0,Yellow);
+   DrawPx(1,1,Yellow);
+   DrawPx(4,0,Yellow);
+   DrawPx(4,1,Yellow);
+   DrawPx(4,2,Yellow);
+   DrawPx(4,3,Yellow);
+   DrawPx(5,2,Yellow);
+   DrawPx(6,1,Yellow);
+   DrawPx(7,3,Yellow);
+   DrawPx(7,2,Yellow);
+   DrawPx(7,1,Yellow);
+   DrawPx(7,0,Yellow);
+  
 }
 
 void levelcheck() // code to check if level needs to change
@@ -181,6 +197,6 @@ void levelcheck() // code to check if level needs to change
           Level ++;
          }
         } 
-     }
-  } 
+     }  
+  }
 }
