@@ -1,3 +1,13 @@
+/*
+the goal of the game is to click on the colored dots with the A button
+to make sounds and eventually win
+
+this version of the game currently skips to the win level with out the first,
+I have not been able to find a way around this problem yet
+
+*/
+
+
 #include <MeggyJrSimple.h>
 // global variables go here
 int xcoord = 0; // x coord of cursor
