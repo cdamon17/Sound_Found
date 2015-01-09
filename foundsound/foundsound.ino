@@ -35,11 +35,11 @@ void loop() // loop code that goes through loop
   {
     DrawLevel1();
   }
-  else if (Level == 2);
-  {
-    DrawLevel2();
-  }
-  levelcheck();
+ //else if (Level == 2);
+  //{
+    //DrawLevel2();
+  //}
+ // levelcheck();
   
   /*
   DrawLevel1();
@@ -115,17 +115,17 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
   CheckButtonsDown();
  if (Button_A)
  {
-   if (xcoord == 4)
+   if (xcoord == 1)
     {
-      if (ycoord == 5)
+      if (ycoord == 2)
        {
          Tone_Start (ToneC3,300);
          dot1 = true;
        }
      }
-   if (xcoord == 6)
+   if (xcoord == 3)
      {
-       if (ycoord == 2)
+       if (ycoord == 5)
          {
            Tone_Start (ToneD3,300);
            dot2 = true;
@@ -137,7 +137,7 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
            */
          }
      }
-   if (xcoord == 2)
+   if (xcoord == 6)
      {
        if (ycoord == 3)
          {
@@ -153,7 +153,7 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
      } 
    if (xcoord == 0)
      {
-       if (ycoord == 4)
+       if (ycoord == 7)
          {
            Tone_Start (ToneB3,300);
            dot4 = true;
