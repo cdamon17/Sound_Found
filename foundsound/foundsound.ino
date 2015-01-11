@@ -35,26 +35,11 @@ void loop() // loop code that goes through loop
   {
     DrawLevel1();
   }
- //else if (Level == 2);
-  //{
-    //DrawLevel2();
-  //}
- // levelcheck();
-  
-  /*
-  DrawLevel1();
-  while(Level == 1) {
-   
-   if (levelcheck()) return;
+  else if (Level == 2);
+  {
+    DrawLevel2();
   }
-  DisplaySlate();
-  ClearSlate();
-  DrawLevel2();
-  while(Level == 2) {
-   if (levelcheck()) return;
-  }
-  */
-  
+  levelcheck(); // code ment to check the first level win conditions
   
   /*
   drawlevel
@@ -210,3 +195,4 @@ void levelcheck() // code to check if level needs to change
      }  
   }
 }
+
