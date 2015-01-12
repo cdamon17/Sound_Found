@@ -156,15 +156,3 @@ void DrawLevel2() // the second level, it spells WIN
    DrawPx(7,0,Yellow);
   
 }
-
-/*
-this code is not nessacery thanks to Mrs. Kiang's help with forming
-void levelcheck() // code to check if level needs to change, with formating
-                  // help from Mrs. Kiang
-{
- if ((dot1 == true) && (dot2 == true) && (dot3 == true) && (dot4 == true))
-         {
-          Level = 2;
-         }
-} // end of levelcheck
-*/
