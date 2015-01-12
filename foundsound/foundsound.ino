@@ -15,7 +15,7 @@ int ycoord = 0; // y coord of cursor
 
 int Level = 1; // levels
 
-boolean dot1 = false;
+boolean dot1 = false; // dots to make level change
 boolean dot2 = false;
 boolean dot3 = false;
 boolean dot4 = false;
@@ -29,26 +29,28 @@ void setup()
 
 void loop() // loop code that goes through loop
 {
-  shift(); // to make coursor work
-  DrawPx(xcoord,ycoord,Blue); // draw coursor
+  ClearSlate();
+  
+  levelcheck(); // code ment to check the first level win conditions
+  
   if (Level == 1) // level change desing with help from Mrs. Kiang
   {
     DrawLevel1();
   }
-  else if (Level == 2);
+  else if (Level == 2)
   {
     DrawLevel2();
   }
-  levelcheck(); // code ment to check the first level win conditions
   
-  /*
-  drawlevel
-  updatelevel
-  */
+  shift(); // to make coursor work
+  if (Level == 1)
+  {
+    DrawPx(xcoord,ycoord,Blue); // draw coursor
+  }
   DisplaySlate();
   delay(150);
-  ClearSlate();
 }
+  
 
 
 void shift() // taken from Maze_Game of Brennan Brown
@@ -100,58 +102,49 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
   CheckButtonsDown();
  if (Button_A)
  {
-   if (xcoord == 1)
-    {
-      if (ycoord == 2)
+   if ((xcoord == 1) && (ycoord == 2))  
+     {
+       Tone_Start (ToneC3,300);
+       dot1 = true;
+     }
+     
+  else if ((xcoord == 3) && (ycoord == 5))
        {
-         Tone_Start (ToneC3,300);
-         dot1 = true;
-       }
-     }
-   if (xcoord == 3)
-     {
-       if (ycoord == 5)
-         {
-           Tone_Start (ToneD3,300);
+         Tone_Start (ToneD3,300);
+         dot2 = true;
+         /*
+         if (dot1 = true) // further code for what I wanted my end game to be
+         {             // but at this point in time I am unable to test it
            dot2 = true;
-           /*
-           if dot1 = true // further code for what I wanted my end game to be
-           {             // but at this point in time I am unable to test it
-             dot2 = true;
-           }
-           */
          }
-     }
-   if (xcoord == 6)
-     {
-       if (ycoord == 3)
-         {
-           Tone_Start (ToneA3,300);
+         */
+       }
+     
+   else if ((xcoord == 6) && (ycoord == 3))
+       {
+         Tone_Start (ToneA3,300);
+         dot3 = true;
+         /* 
+         if (dot2 = true) // further code for what I wanted my end game to be
+         {             // but at this point in time I am unable to test it
            dot3 = true;
-            /*
-           if dot2 = true // further code for what I wanted my end game to be
-           {             // but at this point in time I am unable to test it
-             dot3 = true;
-           }
-           */
          }
-     } 
-   if (xcoord == 0)
-     {
-       if (ycoord == 7)
-         {
-           Tone_Start (ToneB3,300);
+         */
+       }
+     
+   else if ((xcoord == 0) && (ycoord == 7))
+       {
+         Tone_Start (ToneB3,300);
+         dot4 = true;
+         /* 
+         if (dot3 = true) // further code for what I wanted my end game to be
+         {             // but at this point in time I am unable to test it
            dot4 = true;
-            /*
-           if dot3 = true // further code for what I wanted my end game to be
-           {             // but at this point in time I am unable to test it
-             dot4 = true;
-           }
-           */
          }
-     }
- }
-}
+         */
+       }
+ } // end of if button A
+} // end of DrawLevel1
 
 void DrawLevel2() // the second level, it spells WIN
 {
@@ -179,20 +172,21 @@ void DrawLevel2() // the second level, it spells WIN
   
 }
 
-void levelcheck() // code to check if level needs to change
+void levelcheck() // code to check if level needs to change, with formating
+                  // help from Mrs. Kiang
 {
- if (dot1 = true)
-  {
-   if (dot2 = true)
-     {
-      if (dot3 = true)
-        {
-         if (dot4 = true)
+ //if ((dot1 == true) && (dot2 == true) && (dot3 == true) && (dot4 == true))
+ /*if (dot1 == true)
+   {
+     if (dot2 == true)
+       { 
+         if (dot3 == true)
+           {
+             if (dot4 == true)
          {
-          Level ++;
+          Level = 2;
          }
-        } 
-     }  
-  }
-}
-
+           }
+       }
+   } */
+} // end of levelcheck
