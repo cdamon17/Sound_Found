@@ -31,7 +31,8 @@ void loop() // loop code that goes through loop
 {
   ClearSlate();
   
-  levelcheck(); // code ment to check the first level win conditions
+  //levelcheck(); // code ment to check the first level win conditions
+  // mod not needed because of changes for specific order
   
   if (Level == 1) // level change desing with help from Mrs. Kiang
   {
@@ -108,40 +109,28 @@ void DrawLevel1() // help from Mrs, Kiang about how to make levels
        dot1 = true;
      }
      
-  else if ((xcoord == 3) && (ycoord == 5))
+  else if ((xcoord == 3) && (ycoord == 5) && (dot1 == true)) // code to make
+                                                            // dots true in a
+                                                            // certain order
+                                                            // with help from
+                                                            // Mrs. kiang
        {
          Tone_Start (ToneD3,300);
          dot2 = true;
-         /*
-         if (dot1 = true) // further code for what I wanted my end game to be
-         {             // but at this point in time I am unable to test it
-           dot2 = true;
-         }
-         */
+         
        }
      
-   else if ((xcoord == 6) && (ycoord == 3))
+   else if ((xcoord == 6) && (ycoord == 3) && (dot2 == true))
        {
          Tone_Start (ToneA3,300);
          dot3 = true;
-         /* 
-         if (dot2 = true) // further code for what I wanted my end game to be
-         {             // but at this point in time I am unable to test it
-           dot3 = true;
-         }
-         */
        }
      
-   else if ((xcoord == 0) && (ycoord == 7))
+   else if ((xcoord == 0) && (ycoord == 7) && (dot3 == true))
        {
          Tone_Start (ToneB3,300);
          dot4 = true;
-         /* 
-         if (dot3 = true) // further code for what I wanted my end game to be
-         {             // but at this point in time I am unable to test it
-           dot4 = true;
-         }
-         */
+         Level = 2;
        }
  } // end of if button A
 } // end of DrawLevel1
@@ -172,21 +161,14 @@ void DrawLevel2() // the second level, it spells WIN
   
 }
 
+/*
+this code is not nessacery thanks to Mrs. Kiang's help with forming
 void levelcheck() // code to check if level needs to change, with formating
                   // help from Mrs. Kiang
 {
- //if ((dot1 == true) && (dot2 == true) && (dot3 == true) && (dot4 == true))
- /*if (dot1 == true)
-   {
-     if (dot2 == true)
-       { 
-         if (dot3 == true)
-           {
-             if (dot4 == true)
+ if ((dot1 == true) && (dot2 == true) && (dot3 == true) && (dot4 == true))
          {
           Level = 2;
          }
-           }
-       }
-   } */
 } // end of levelcheck
+*/
